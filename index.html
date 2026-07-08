@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Transcript Extractor</title>
+    <!-- Tailwind CSS for modern UI -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col items-center justify-center p-4">
+
+    <div class="w-full max-w-2xl bg-gray-800 p-6 rounded-2xl shadow-xl border border-gray-700">
+        <h1 class="text-3xl font-bold text-center text-blue-400 mb-2">🎥 YouTube Transcript Extractor</h1>
+        <p class="text-gray-400 text-center text-sm mb-6">Kisi bhi YouTube video ka text (transcript) turant nikalein.</p>
+
+        <!-- Input Section -->
+        <div class="flex flex-col sm:flex-row gap-3 mb-6">
+            <input type="text" id="videoUrl" placeholder="Yahan YouTube Video ka Link daalein..." 
+                   class="flex-1 bg-gray-700 border border-gray-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-all">
+            <button id="extractBtn" onclick="fetchTranscript()" 
+                    class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-xl transition-all cursor-pointer shadow-md">
+                Extract Text
+            </button>
+        </div>
+
+        <!-- Status / Loading -->
+        <div id="status" class="hidden text-center text-amber-400 font-medium mb-4 animate-pulse">
+            Processing... Please wait...
+        </div>
+
+        <!-- Result Section -->
+        <div id="resultContainer" class="hidden">
+            <div class="flex justify-between items-center mb-2">
+                <h2 class="text-lg font-semibold text-green-400">Transcript Result:</h2>
+                <button onclick="copyToClipboard()" class="text-xs bg-gray-700 hover:bg-gray-600 px-3 py-1.5 rounded-lg border border-gray-600 cursor-pointer">
+                    📋 Copy Text
+                </button>
+            </div>
+            <textarea id="transcriptBox" readonly 
+                      class="w-full h-64 bg-gray-950 border border-gray-800 rounded-xl p-4 text-gray-300 font-mono text-sm resize-none focus:outline-none"></textarea>
+        </div>
+    </div>
+
+    <!-- Attaching main.js -->
+    <script src="main.js"></script>
+</body>
+</html>
